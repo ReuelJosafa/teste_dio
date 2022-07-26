@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 
-import '../models/product.dart';
-import '../services/json_placeholder_service.dart';
+import 'services/home_service.dart';
+import 'models/product.dart';
 
 class HomeController extends ChangeNotifier {
-  final JsonPlaceholderService _service;
+  final HomeService _service;
 
   HomeController(this._service);
 
@@ -12,7 +12,7 @@ class HomeController extends ChangeNotifier {
 
   Future<void> fetchAllProducts() async {
     products = [];
-    products = await _service.getProducts();
+    products = await _service.fetchProducts();
     notifyListeners();
   }
 }

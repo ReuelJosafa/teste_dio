@@ -1,18 +1,19 @@
 import '../models/product.dart';
-import 'http_client_interface.dart';
+import '../../../services/data_source/http_client_interface.dart';
 
-const url = 'https://teste-mercadinho-udemy.herokuapp.com/api/produtos';
-
-class JsonPlaceholderService {
+class HomeService {
   // final Dio _dio;
   final HttpClientInterface client;
 
-  JsonPlaceholderService(this.client);
+  HomeService(this.client);
 
-  Future<List<Product>> getProducts() async {
-    final data = await client.get(url) as List;
-
+  Future<List<Product>> fetchProducts() async {
+    final data = await client.get('produtos') as List;
     return data.map<Product>(Product.fromJson).toList();
+  }
+
+  Future<bool> insertProduct(Product product) async {
+    return false;
   }
 
   /* Future<void> addProduct(Product product) async {

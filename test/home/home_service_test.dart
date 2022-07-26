@@ -1,9 +1,11 @@
 import 'package:dio/native_imp.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:teste_dio/services/http_client_interface.dart';
-import 'package:teste_dio/services/http_package_client.dart';
-import 'package:teste_dio/services/json_placeholder_service.dart';
+import 'package:teste_dio/src/modules/home/services/home_service.dart';
+import 'package:teste_dio/src/services/data_source/http_client_interface.dart';
+import 'package:teste_dio/src/services/dio_repository.dart';
+import 'package:teste_dio/src/services/http_repository.dart';
+
 
 class DioMock extends Mock implements DioForNative {}
 
@@ -12,7 +14,7 @@ class HttpClientMock extends Mock implements HttpClientInterface {}
 void main() async {
   test('Retorna todos os produtos', () async {
     // final dio = Dio();
-    final client = HttpPackageClient();
+    final client = DioRepository();
     // final client = DioClient();
     /* final respose = Response(
         requestOptions: RequestOptions(path: ''),
@@ -21,8 +23,8 @@ void main() async {
     /* when(() => client.get(url))
         .thenAnswer((invocation) async => jsonDecode(jsonProducts)); */
 
-    final homeService = JsonPlaceholderService(client);
-    final products = await homeService.getProducts();
+    final homeService = HomeService(client);
+    final products = await homeService.fetchProducts();
     expect(products[0].nome, 'Bolo de creme');
     print(products);
     // expect(products[1].nome, 'Bolo de creme');

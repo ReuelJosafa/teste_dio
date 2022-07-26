@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:teste_dio/controllers/home_controller.dart';
+
+import 'home_controller.dart';
 
 class HomePage extends StatefulWidget {
   static const String id = 'home_page';

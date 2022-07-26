@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:teste_dio/app_module.dart';
-import 'package:teste_dio/views/home_page.dart';
+import 'package:teste_dio/src/app_module.dart';
+
+import 'src/modules/home/home_page.dart';
 
 void main() {
   runApp(ModularApp(module: AppModule(), child: const MyApp()));

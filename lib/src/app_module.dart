@@ -1,10 +1,10 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:teste_dio/services/dio_client.dart';
-import 'package:teste_dio/services/http_client_interface.dart';
-import 'package:teste_dio/views/home_page.dart';
 
-import 'controllers/home_controller.dart';
-import 'services/json_placeholder_service.dart';
+import 'modules/home/home_controller.dart';
+import 'modules/home/home_page.dart';
+import 'services/dio_repository.dart';
+import 'services/data_source/http_client_interface.dart';
+import 'modules/home/services/home_service.dart';
 
 class AppModule extends Module {
   /* final controller =
@@ -12,8 +12,8 @@ class AppModule extends Module {
   @override
   List<Bind> get binds => [
         /* Bind.singleton<HttpClientInterface>((i) => HttpPackageClient()), */
-        Bind.singleton<HttpClientInterface>((i) => DioClient()),
-        Bind.singleton((i) => JsonPlaceholderService(i())),
+        Bind.singleton<HttpClientInterface>((i) => DioRepository()),
+        Bind.singleton((i) => HomeService(i())),
         Bind.singleton((i) => HomeController(i())),
       ];
 
